@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Primary</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<title>PG 1st Ward Primary Directory</title>
+	<%= stylesheet_link_tag    "application", :media => "screen" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div class="container">
+	<header>
+		<ul>
+			<li><%= link_to "Manage classes", primary_classes_path %></li>
+			<li><%= link_to "Manage children", primary_children_path %></li>
+		</ul>
+	</header>
+	<div class="content container">
+		<% flash.each do |key, value| %>
+        	<div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+		<%= yield %>
+	</div>
+</div>
 
 </body>
 </html>

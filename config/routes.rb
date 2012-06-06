@@ -1,4 +1,10 @@
 Primary::Application.routes.draw do
+  resources :primary_children
+
+  resources :primary_classes
+  
+  root :to => 'primary_children#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

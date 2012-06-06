@@ -1,0 +1,36 @@
+<%= form_for(@primary_child, :html => {:multipart => true}) do |f| %>
+	<% if @primary_child.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@primary_child.errors.count, "error") %>:</h2>
+		<ul>
+		<% @primary_child.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<div class="field">
+	<%= f.label :first_name %><br />
+	<%= f.text_field :first_name %>
+</div>
+<div class="field">
+	<%= f.label :last_name %><br />
+	<%= f.text_field :last_name %>
+</div>
+<div class="field">
+	<%= f.label :primary_class_id %><br />
+	<%= f.select :primary_class_id, options_from_collection_for_select(PrimaryClass.find(:all, order:"name"), "id", "name"), prompt:"Please choose one" %>
+</div>
+<div class="field">
+	<%= f.label :birthday %><br />
+	<%= f.date_select :birthday %>
+</div>
+<div class="field">
+	<%= label_tag "upload_file_filename", "Upload photo" %>
+	<%= file_field 'upload_file', 'filename' %>
+</div>
+<div class="actions">
+	<%= f.submit lbl %>
+</div>
+<% end %>

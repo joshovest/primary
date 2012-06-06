@@ -1,0 +1,2 @@
+module PrimaryClassesHelper
+end

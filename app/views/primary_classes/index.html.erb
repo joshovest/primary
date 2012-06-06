@@ -1,0 +1,21 @@
+<h1>All primary classes</h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @primary_classes.each do |primary_class| %>
+	<tr>
+		<td><%= primary_class.name %></td>
+		<td><%= link_to 'Edit', edit_primary_class_path(primary_class) %></td>
+		<td><%= link_to 'Delete', primary_class, confirm: 'Are you sure?', method: :delete %></td>
+	</tr>
+	<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Primary class', new_primary_class_path %>
