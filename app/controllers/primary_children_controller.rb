@@ -1,6 +1,18 @@
 class PrimaryChildrenController < ApplicationController
+  layout "directory", :only => [ "directory" ]
+  
   def index
     @primary_children = PrimaryChild.all
+  end
+  
+  def directory
+    sort = params[:sort] == "class" ? "birthday,last_name,first_name" : "last_name,first_name,birthday"
+    oldest_class = PrimaryClass.maximum("age")
+    youngest_class = PrimaryClass.minimum("age")
+    max_birthday = Time.new(Time.now.year-oldest_class, 12, 31)
+    min_birthday = Time.new(Time.now.year-youngest_class, 12, 31)
+    
+    @primary_children = PrimaryChild.where(:birthday => (max_birthday..min_birthday)).order(sort)
   end
 
   def new

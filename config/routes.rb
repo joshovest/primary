@@ -1,5 +1,9 @@
 Primary::Application.routes.draw do
-  resources :primary_children
+  resources :primary_children do
+    collection do
+      get 'directory'
+    end
+  end
 
   resources :primary_classes
   

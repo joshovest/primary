@@ -13,6 +13,8 @@
 		<ul>
 			<li><%= link_to "Manage classes", primary_classes_path %></li>
 			<li><%= link_to "Manage children", primary_children_path %></li>
+			<li><%= link_to "Directory by child", directory_primary_children_path(sort: "child") %></li>
+			<li><%= link_to "Directory by class", directory_primary_children_path(sort: "class") %></li>
 		</ul>
 	</header>
 	<div class="content container">

@@ -1,0 +1,47 @@
+<div id="page-0" class="page even"></div>
+<div id="page-1" class="page odd">
+	<h1>Pleasant Grove 1st Ward</h1>
+	<h2>Primary Directory</h2>
+</div>
+
+<%
+@child_count = 0
+@row_count = 0
+@page_count = 1
+@per_page = 12
+@per_row = 4
+@html = ""
+@primary_children.each do |p|
+  @child_count += 1
+  
+  if (@child_count % @per_page == 1) || @page_count == 1
+    @page_count += 1
+    @odd_even = (@per_page % 2 == 0 ? "even" : "odd")
+    if @page_count > 2
+      @html += "</div>\n"
+      @html += "<div class=\"footer\">Page #{(@page_count-1)}</div>\n"
+      @html += "</div>\n"
+    end
+    @html += "<div id=\"page-#{@page_count}\" class=\"page #{@odd_even}\">\n"
+  end
+  
+  if (@child_count % @per_row == 1) || @row_count == 0
+    @row_count += 1
+    @html += "</div><!-- row end -->\n" if (@row_count > 1 &&  @child_count % @per_page != 1)
+    @html += "<div class=\"row\">\n"
+  end
+  
+  @html += "<div class=\"item\">\n"
+  @html += "<img src=\"/photos/#{p.id}.jpg\" alt=\"#{p.first_name} #{p.last_name}\"/>\n"
+  @html += "<h3>#{p.first_name} #{p.last_name}</h3>\n"
+  @html += "<h4>#{p.birthday.month}/#{p.birthday.day}/#{p.birthday.year}</h4>\n"
+  @html += "<h5>#{p.get_class_name()}</h5>\n"
+  @html += "</div>\n"
+end 
+
+@html += "</div>\n"
+@html += "<div class=\"footer\">Page #{(@page_count-1)}</div>\n"
+@html += "</div>\n"
+%>	
+
+<%= @html.html_safe %>
