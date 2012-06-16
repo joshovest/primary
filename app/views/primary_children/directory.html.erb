@@ -35,7 +35,7 @@
   @html += "<img src=\"/photos/#{p.id}.jpg\" alt=\"#{p.first_name} #{p.last_name}\"/>\n"
   @html += "<h3>#{p.first_name} #{p.last_name}</h3>\n"
   @html += "<h4>#{p.birthday.month}/#{p.birthday.day}/#{p.birthday.year}</h4>\n"
-  @html += "<h5>#{p.get_class_name()}</h5>\n"
+  @html += "<h5>#{p.primary_class.name}</h5>\n"
   @html += "</div>\n"
 end 
 

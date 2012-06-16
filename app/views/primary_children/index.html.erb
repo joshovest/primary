@@ -4,6 +4,7 @@
 	<tr>
 		<th>First name</th>
 		<th>Last name</th>
+		<th>Class</th>
 		<th>Birthday</th>
 		<th></th>
 		<th></th>
@@ -13,6 +14,7 @@
 	<tr>
 		<td><%= primary_child.first_name %></td>
 		<td><%= primary_child.last_name %></td>
+		<td><%= primary_child.primary_class.name if !primary_child.primary_class.nil? %></td>
 		<td><%= primary_child.birthday %></td>
 		<td><%= link_to 'Edit', edit_primary_child_path(primary_child) %></td>
 		<td><%= link_to 'Delete', primary_child, confirm: 'Are you sure?', method: :delete %></td>
