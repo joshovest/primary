@@ -1,6 +1,6 @@
 class PrimaryClassesController < ApplicationController
   def index
-    @primary_classes = PrimaryClass.all
+    @primary_classes = PrimaryClass.all(:order => :name)
   end
 
   def new

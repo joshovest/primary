@@ -2,12 +2,11 @@ class PrimaryChildrenController < ApplicationController
   layout "directory", :only => [ "directory" ]
   
   def index
-    @primary_children = PrimaryChild.all
+    @primary_children = PrimaryChild.all(:order => "primary_class_id,birthday,last_name,first_name")
   end
   
   def directory
-  
-    sort = params[:sort] == "class" ? "birthday,last_name,first_name" : "last_name,first_name,birthday"
+    sort = params[:sort] == "class" ? "primary_class_id,birthday,last_name,first_name" : "last_name,first_name,birthday"
     max_age = 12
     min_age = 4
     max_birthday = Time.new(Time.now.year-max_age, 12, 31)
