@@ -20,7 +20,7 @@
 </div>
 <div class="field">
 	<%= f.label :primary_class_id, "Class" %><br />
-	<%= f.select :primary_class_id, options_from_collection_for_select(PrimaryClass.find(:all, order:"name"), "id", "name"), prompt:"Please choose one" %>
+	<%= f.select :primary_class_id, PrimaryClass.all.collect {|p| [ p.name, p.id ] }, {:include_blank => "Please choose one"} %>
 </div>
 <div class="field">
 	<%= f.label :birthday %><br />
