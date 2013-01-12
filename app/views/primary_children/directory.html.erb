@@ -33,7 +33,7 @@
     end
   
     @html += "<div class=\"item\">\n"
-    @html += "<img src=\"/photos/#{p.id}.jpg\" alt=\"#{p.first_name} #{p.last_name}\"/>\n"
+    @html += "<img src=\"/photos/#{p.first_name.downcase}_#{p.last_name.downcase}.jpg\" alt=\"#{p.first_name} #{p.last_name}\"/>\n"
     @html += "<h3>#{p.first_name} #{p.last_name}</h3>\n"
     @html += "<h4>#{p.birthday.month}/#{p.birthday.day}/#{p.birthday.year}</h4>\n"
     @html += "<h5>#{p.primary_class.name}</h5>\n"
