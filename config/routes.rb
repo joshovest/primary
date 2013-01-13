@@ -2,6 +2,7 @@ Primary::Application.routes.draw do
   resources :primary_children do
     collection do
       get 'directory'
+      get 'do_age'
     end
   end
 
