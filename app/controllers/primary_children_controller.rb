@@ -21,6 +21,8 @@ class PrimaryChildrenController < ApplicationController
       c.age = Time.now.year - c.birthday.year if c.age.nil?
       c.save
     end
+    
+    render :index
   end
 
   def new
